@@ -116,6 +116,7 @@ def main():
     Args: None
     Return: None 
     """
+    
     lista = [] #instanciar una lista vacia
     while True:
         printMenu() #imprimir el menu de opciones en consola
@@ -138,6 +139,7 @@ def main():
                 print("Coinciden ",counter," elementos con el crtierio: '", criteria ,"' (en construcción ...)")
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0)
+    lista2 = [] #instanciar una lista vacia
 
 if __name__ == "__main__":
     main()
