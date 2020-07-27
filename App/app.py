@@ -31,9 +31,9 @@ import sys
 import csv
 from time import process_time 
 
-def loadCSVFilejjj (file, lst, sep=";"):
+def loadCSVFile (file, lst, sep=";"):
     """
-    Carga un archivo csv a una lista
+    Carga un archivo jpg a una lista
     Args:
         file 
             Archivo de texto del cual se cargaran los datos requeridos.
@@ -54,8 +54,8 @@ def loadCSVFilejjj (file, lst, sep=";"):
     try:
         with open(file, encoding="utf-8") as csvfile:
             spamreader = csv.DictReader(csvfile, dialect=dialect)
-            for row in spamreader: 
-                lst.append(row)
+            for fila in spamreader: 
+                lst.append(fila)
     except:
         del lst[:]
         print("Se presento un error en la carga del archivo")
@@ -122,7 +122,7 @@ def main():
         inputs =input('Seleccione una opción para continuar\n') #leer opción ingresada
         if len(inputs)>0:
             if int(inputs[0])==1: #opcion 1
-                loadCSVFilejjj("Data/test.csv", lista) #llamar funcion cargar datos
+                loadCSVFile("Data/test.csv", lista) #llamar funcion cargar datos
                 print("Datos cargados, "+str(len(lista))+" elementos cargados")
             elif int(inputs[0])==2: #opcion 2
                 if len(lista)==0: #obtener la longitud de la lista
