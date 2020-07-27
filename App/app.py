@@ -33,7 +33,7 @@ from time import process_time
 
 def loadCSVFile (file, lst, sep=";"):
     """
-    Carga un archivo csv a una lista
+    Carga un archivo jpg a una lista
     Args:
         file 
             Archivo de texto del cual se cargaran los datos requeridos.
@@ -54,8 +54,8 @@ def loadCSVFile (file, lst, sep=";"):
     try:
         with open(file, encoding="utf-8") as csvfile:
             spamreader = csv.DictReader(csvfile, dialect=dialect)
-            for row in spamreader: 
-                lst.append(row)
+            for fila in spamreader: 
+                lst.append(fila)
     except:
         del lst[:]
         print("Se presento un error en la carga del archivo")
