@@ -31,9 +31,9 @@ import sys
 import csv
 from time import process_time 
 
-def loadCSVFile (file, lst, sep=";"):
+def loadCSVFilejjj (file, lst, sep=";"):
     """
-    Carga un archivo jpg a una lista
+    Carga un archivo csv a una lista
     Args:
         file 
             Archivo de texto del cual se cargaran los datos requeridos.
@@ -54,8 +54,8 @@ def loadCSVFile (file, lst, sep=";"):
     try:
         with open(file, encoding="utf-8") as csvfile:
             spamreader = csv.DictReader(csvfile, dialect=dialect)
-            for fila in spamreader: 
-                lst.append(fila)
+            for row in spamreader: 
+                lst.append(row)
     except:
         del lst[:]
         print("Se presento un error en la carga del archivo")
@@ -117,6 +117,30 @@ def main():
     Return: None 
     """
     mnuevo= " "
+    
+    lista = [] #instanciar una lista vacia
+    while True:
+        printMenu() #imprimir el menu de opciones en consola
+        inputs =input('Seleccione una opción para continuar\n') #leer opción ingresada
+        if len(inputs)>0:
+            if int(inputs[0])==1: #opcion 1
+                loadCSVFilejjj("Data/test.csv", lista) #llamar funcion cargar datos
+                print("Datos cargados, "+str(len(lista))+" elementos cargados")
+            elif int(inputs[0])==2: #opcion 2
+                if len(lista)==0: #obtener la longitud de la lista
+                    print("La lista esta vacía")    
+                else: print("La lista tiene "+str(len(lista))+" elementos")
+            elif int(inputs[0])==3: #opcion 3
+                criteria =input('Ingrese el criterio de búsqueda\n')
+                counter=countElementsFilteredByColumn(criteria, "nombre", lista) #filtrar una columna por criterio  
+                print("Coinciden ",counter," elementos con el crtierio: ", criteria  )
+            elif int(inputs[0])==4: #opcion 4
+                criteria =input('Ingrese el criterio de búsqueda\n')
+                counter=countElementsByCriteria(criteria,0,lista)
+                print("Coinciden ",counter," elementos con el crtierio: '", criteria ,"' (en construcción ...)")
+            elif int(inputs[0])==0: #opcion 0, salir
+                sys.exit(0)
+    lista2 = [] #instanciar una lista vacia
 
 if __name__ == "__main__":
     main()
